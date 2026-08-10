@@ -1,15 +1,27 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.Comparator;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        CursoEscolhido c = new CursoEscolhido("Meidicina",7.5,15.0);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Estudante e1 = new Estudante("Marcos",7.9,18.0);
+        Estudante e2 = new Estudante("Débora",9.1,7.0);
+        Estudante e3 = new Estudante("Clara",8.1,4.0);
+        Estudante e4 = new Estudante("Kleber",7.2,2.5);
+
+        c.inserirEstudante(e1);
+        c.inserirEstudante(e2);
+        c.inserirEstudante(e3);
+        c.inserirEstudante(e4);
+
+        ArrayList<Estudante> alunosAprovados = c.retornarAlunosAprovados();
+
+        alunosAprovados.sort(Comparator.comparing(Estudante::getDistanciaLocalidade));
+
+        for (int i = 0;i<= alunosAprovados.size()-1;i++){
+            System.out.println(alunosAprovados.get(i));
+
         }
     }
 }
